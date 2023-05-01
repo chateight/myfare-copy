@@ -1,0 +1,17 @@
+{{ define "main" }}
+  <h1>Wellcome to CoderDojo</h1>
+  <p>{{ .Time }}</p>
+  <h2>今日チェックインしているニンジャとメンター</h2>
+  <ul>
+    {{ range .Slice }}
+        <div class = 'square'><h2><div class = 'color_text'><a href="./?nickname={{ . }}">{{ . }}</a><div></h2></div>
+    {{ end }}
+  </ul>
+  <h2>はっぴょうするニンジャ</h2>
+  <ul>
+    {{ range .PresentationSlice }}
+        <div class = 'squarePresentation'><h2><div class = 'color_text'>{{ . }}<div></h2></div>
+    {{ end }}
+  </ul>
+{{ end }}
+

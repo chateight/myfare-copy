@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>chat</title>
+    <link rel="stylesheet" href="/static/css/common.css">
+  </head>
+
+  <body>
+
+    <div class="line">
+      <div id="room" class="line-header">Pls select icon & enter name to join</div>
+      <div id="chat" class="line-container">
+        <div class='top-text'>アイコンの一覧</div>
+        <div class='line-left'><img src="static/img/cat1.png"><div class='top-text'> : cat1</div></div>
+        <div class='line-left'><img src="static/img/cat2.png"><div class='top-text'> : cat2</div></div>
+        <div class='line-left'><img src="static/img/dog1.png"><div class='top-text'> : dog1</div></div>
+        <div class='line-left'><img src="static/img/dog2.png"><div class='top-text'> : dog2</div></div>
+        <div class='line-left'><img src="static/img/uncle.png"><div class='top-text'> : uncle</div></div>
+      </div>
+      <div class="line-form">
+        <select id="icon" name="icon" id="icon">
+          <option value="cat1">cat1</option>
+          <option value="cat2">cat2</option>
+          <option value="dog1">dog1</option>
+          <option value="dog2">dog2</option>
+          <option value="uncle">uncle</option>
+        </select>
+        <input placeholder="user name" id="user" type="text">
+        <button id="join" class="line-form-button" onclick="send_data()">Join</button>
+      </div>
+    </div>
+
+    <script>
+
+      const join = document.getElementById("join");
+      const icon = document.getElementById("icon");
+      const user = document.getElementById("user");
+
+      join.onclick = function () {
+        if (user.value == "") {
+          alert("なまえ(user name)を入れないとすすめません");
+          return;
+        }
+        localStorage.setItem("icon",icon.value)
+				localStorage.setItem("user",user.value)
+        window.location = "/room/dojo:?name=" + user.value + "&icon=" +icon.value;
+      };
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>attendance</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./resources/style.css">
+
+    <script type="text/javascript">
+      let urlws = "ws://" + window.location.host + "/ws";
+      var socket = null;
+
+  window.onload = function () {
+  socket = new WebSocket(urlws);
+  socket.onopen = function () {
+    append_message("system", "Socket Connected");
+  };
+  socket.onmessage = function (event) {
+    append_message("server", event.data);
+  };
+
+  const send = function (){
+    socket.send("")
+  }
+  setInterval(send, 500);
+
+};
+
+function append_message(name, message) {
+
+  let li_message = document.createElement("li");
+  li_message.textContent = message;
+
+  let ul = document.getElementById("messages");
+  ul.appendChild(li_message);
+
+}
+let urlhttp = "http://" + window.location.host;
+
+const windowFeatures = "left=100,top=100,width=500,height=800"; // normally, all browser disable to generate pop up window
+      	function OnButtonClick(){
+ 			 window.open(urlhttp.replace('8080', '8082'), windowFeatures);
+		};
+
+</script>
+
+  </head>
+  <body>
+    {{ template "main" . }}
+    <input type="button" value="チャットに入る" onclick="OnButtonClick();"/><br />
+    <p>&lt;message area&gt;</p>
+    <ul id="messages"></ul>
+  </body>
+</html>
