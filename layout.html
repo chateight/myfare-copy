@@ -35,12 +35,13 @@ function append_message(name, message) {
   ul.appendChild(li_message);
 
 }
-let urlhttp = "http://" + window.location.host;
 
+let urlhttp = "http://" + window.location.host;
 const windowFeatures = "left=100,top=100,width=500,height=800"; // normally, all browser disable to generate pop up window
-      	function OnButtonClick(){
+
+function OnButtonClick(){
  			 window.open(urlhttp.replace('8080', '8082'), windowFeatures);
-		};
+};
 
 </script>
 
