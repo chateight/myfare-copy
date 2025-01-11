@@ -1,9 +1,11 @@
 # raspberry pi myfare card chechin & chat app
 
-myfare: myfare card application folder(integrate go_chat function @2023/4/30)
+myfare: myfare card application folder(go_chat function was integrated @2023/4/30)
 
-uid.json file is not presented here, but you can simply create it from its structure
-
+uid.json file is not presented here, but you can simply create it from its structure like following
+[
+{"uid": "xxxxxxxxx","name": "yyyy"}
+]
 two *.db files are automatically created
 
 serial: receive myfare card uid from M5Stackc Plus
