@@ -1,4 +1,6 @@
-# raspberry pi myfare card chechin & chat app
+# raspberry pi myfare card checkin & chat app
+
+updated to cgo free code
 
 myfare: myfare card application folder(go_chat function was integrated @2023/4/30)
 

@@ -18,7 +18,7 @@ import (
 	"strconv"
 	"time"
 
-	_ "github.com/mattn/go-sqlite3"
+    _ "github.com/glebarez/sqlite"
 
 	"go.bug.st/serial"
 	"go.bug.st/serial/enumerator"
@@ -68,7 +68,7 @@ func readJsonFile(f string) {
 func tableCreate(del bool) {
 	// DataBase table create
 
-	db, err := sql.Open("sqlite3", "./myfare.db")
+	db, err := sql.Open("sqlite", "./myfare.db")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -116,7 +116,7 @@ func tableCreate(del bool) {
 func tableUpdate(uid string) {
 	// DataBase table create
 
-	db, err := sql.Open("sqlite3", "./myfare.db")
+	db, err := sql.Open("sqlite", "./myfare.db")
 	if err != nil {
 		log.Fatal(err)
 	}
