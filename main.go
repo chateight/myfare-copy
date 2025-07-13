@@ -4,7 +4,8 @@
 //
 // the gin & melody are used to create this application
 //
-
+// GOOS=linux GOARCH=arm GOARM=6 go build -o "binary file name"
+// go mod tidy before build
 
 package main
 
