@@ -4,7 +4,7 @@
 //
 // the gin & melody are used to create this application
 //
-// GOOS=linux GOARCH=arm GOARM=6 go build -o "binary file name"
+// GOOS=linux GOARCH=arm GOARM=6 go build -ldflags="-s -w" -o "mifare_cfree_up"
 // go mod tidy before build( in case of go mod is updated)
 
 package main
@@ -107,7 +107,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	t := template.Must(template.ParseFiles("layout.html", "pageData.html"))
 	// to update ninjya status
 	if r.FormValue("nickname") != "" {
-		presentationSet(r.FormValue("nickname"))
+		presentationSet(r.FormValue("nickname"))                                     
 	}
 	// to get updated ninjyas slice(ninjyaSlice/ninjyaPresentaionSlice)
 	ninjya()
@@ -161,7 +161,7 @@ label:
 		select {
 		// to send websocket message triggered by the timer
 		// the reason to separate receive and send is ws are running multi thread
-		case <- t.C:
+		case <-t.C:
 			if premsg != msg {
 				premsg = msg
 				err := websocket.Message.Send(ws, msg)
@@ -170,7 +170,7 @@ label:
 					break label
 				}
 			}
-		case msgSerial := <- uidSerial.Notice: // wait for message from serial.go via channel
+		case msgSerial := <-uidSerial.Notice: // wait for message from serial.go via channel
 			mu.Lock()
 			msg = msgSerial.(string)
 			mu.Unlock()
@@ -186,8 +186,7 @@ func main() {
 	sql_db.DbCreate()
 	// start chat service
 	go chat.Run()
-	
+
 	// start myfare card service
 	wevServer()
 }
-
