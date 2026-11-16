@@ -13,3 +13,13 @@ two *.db files are automatically created
 serial: receive myfare card uid from M5Stackc Plus
 
 go_chat: simple chat app using gin/melody/sqlite3
+
+-------------------------------------------
+rip zero start script
+
+$ cat mifare_image.sh
+#/bin/sh
+cd myfare
+./mifare_cfree_up &
+cd ../image
+./imgproc &
